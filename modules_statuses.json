@@ -1,0 +1,11 @@
+{
+    "User": true,
+    "Dashboard": true,
+    "Category": true,
+    "Permission": true,
+    "Course": true,
+    "Article": true,
+    "Slider": true,
+    "Banner": true,
+    "Media": true
+}

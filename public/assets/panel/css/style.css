@@ -673,7 +673,7 @@ textarea {
     content: '\e031';
 }
 
-.sidebar__nav .i-my__peyments a::before {
+.sidebar__nav .i-my__payments a::before {
     content: '\e137';
 }
 
@@ -681,8 +681,12 @@ textarea {
     content: '\e0b2';
 }
 
-.sidebar__nav .i-user__inforamtion a::before {
+.sidebar__nav .i-user__information a::before {
     content: '\e111';
+}
+
+.sidebar__nav .i-user__permission a::before {
+    content: '\e084';
 }
 
 .sidebar__nav.is-active ul li {
@@ -1873,3 +1877,8 @@ span.tagRemove:hover {
 .notification__box .title__noti{
     padding: 15px 0;
 }
+
+.d-inline-block{
+    display: inline-block;
+}
+
