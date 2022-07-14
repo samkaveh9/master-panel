@@ -41,6 +41,8 @@ class ArticleController extends Controller
             $fileName = date('Ymdhis') . '.' . $fileExtension;
             $file->move(storage_path('app/public/'), $fileName);
             Article::create(array_merge($request->validated(), ['banner' => $fileName]));
+            flash()->title("successfully action")
+                ->success('مقاله با موفقیت اضافه شد')->flash();
         }
         return redirect(route('articles.index'));
     }
@@ -80,8 +82,12 @@ class ArticleController extends Controller
             $fileName = date('Ymdhis') . '.' . $fileExtension;
             $file->move(storage_path('app/public/'), $fileName);
             $article->update(array_merge($request->validated(), ['banner' => $fileName]));
+            flash()->title("successfully action")
+                ->success('مقاله با موفقیت ویرایش شد')->flash();
         }else{
             $article->update(array_merge($request->validated(), ['banner' => $article->banner]));
+            flash()->title("successfully action")
+                ->success('مقاله با موفقیت ویرایش شد')->flash();
         }
         return redirect(route('articles.index'));
     }
@@ -95,6 +101,8 @@ class ArticleController extends Controller
     {
         unlink(storage_path('app/public/'. $article->banner));
         $article->delete();
+        flash()->title("successfully action")
+            ->success('مقاله با موفقیت حذف شد')->flash();
         return back();
     }
 }

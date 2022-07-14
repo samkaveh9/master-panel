@@ -41,6 +41,8 @@ class BannerController extends Controller
             $fileName = date('Ymdhis') . '.' . $fileExtension;
             $file->move(storage_path('app/public/'), $fileName);
             Banner::create(array_merge($request->validated(), ['banner' => $fileName]));
+            flash()->title("successfully action")
+                ->success('بنر با موفقیت اضافه شد')->flash();
         }
         return redirect(route('banners.index'));
     }
@@ -80,8 +82,12 @@ class BannerController extends Controller
             $fileName = date('Ymdhis') . '.' . $fileExtension;
             $file->move(storage_path('app/public/'), $fileName);
             $banner->update(array_merge($request->only('title', 'status'), ['banner' => $fileName]));
+            flash()->title("successfully action")
+                ->success('بنر با موفقیت ویرایش شد')->flash();
         }else{
             $banner->update(array_merge($request->only('title', 'status'), ['banner' => $banner->banner]));
+            flash()->title("successfully action")
+                ->success('بنر با موفقیت ویرایش شد')->flash();
         }
         return redirect(route('banners.index'));
     }
@@ -95,6 +101,8 @@ class BannerController extends Controller
     {
         unlink(storage_path('app/public/'. $banner->banner));
         $banner->delete();
+        flash()->title("successfully action")
+            ->success('بنر با موفقیت حذف شد')->flash();
         return back();
     }
 }

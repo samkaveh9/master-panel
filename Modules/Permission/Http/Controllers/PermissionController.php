@@ -42,7 +42,8 @@ class PermissionController extends Controller
     public function store(PermissionRequest $request)
     {
         Role::create($request->only('name'))->syncPermissions($request->permissions);
-//        dd($request->all());
+        flash()->title("successfully action")
+            ->success('دسترسی با موفقیت اضافه شد')->flash();
          return back();
     }
 
@@ -78,6 +79,8 @@ class PermissionController extends Controller
     {
         $role = Role::findOrFail($id);
         $role->syncPermissions($request->permissions)->update($request->only('name'));
+        flash()->title("successfully action")
+            ->success('دسترسی با موفقیت ویرایش شد')->flash();
         return redirect(route('permissions.index'));
     }
 
@@ -91,6 +94,8 @@ class PermissionController extends Controller
 //        $role = Role::findOrFail($id);
 //        $role->delete();
         Role::where('id', $id)->delete();
+        flash()->title("successfully action")
+            ->success('دسترسی با موفقیت حذف شد')->flash();
         return back();
     }
 }

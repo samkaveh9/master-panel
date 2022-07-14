@@ -36,6 +36,8 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         Category::create($request->validated());
+        flash()->title("successfully action")
+            ->success('دسته بندی با موفقیت اضافه شد')->flash();
         return back();
     }
 
@@ -70,6 +72,8 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category)
     {
         $category->update($request->validated());
+        flash()->title("successfully action")
+            ->success('دسته بندی با موفقیت ویرایش شد')->flash();
         return redirect(route('categories.index'));
     }
 
@@ -81,6 +85,8 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
+        flash()->title("successfully action")
+            ->success('دسته بندی با موفقیت حذف شد')->flash();
         return back();
     }
 }

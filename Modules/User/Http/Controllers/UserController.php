@@ -107,8 +107,12 @@ class UserController extends Controller
             $fileName = date('Ymdhis') . '.' . $fileExtension;
             $file->move(storage_path('app/public/'), $fileName);
             $user->update(array_merge($request->validated(), ['image' => $fileName]));
+            flash()->title("successfully action")
+                ->success('اطلاعات شما با موفقیت ویرایش شد')->flash();
         }else{
             $user->update(array_merge($request->validated(), ['image' => $user->image]));
+            flash()->title("successfully action")
+                ->success('اطلاعات شما با موفقیت ویرایش شد')->flash();
         }
         return back();
     }
@@ -130,6 +134,8 @@ class UserController extends Controller
             $fileName = date('Ymdhis') . '.' . $fileExtension;
             $file->move(storage_path('app/public/'), $fileName);
             $user->update(['image' => $fileName]);
+            flash()->title("successfully action")
+                ->success('تصویر پروفایل شما با موفقیت تغییر کرد')->flash();
         }
         return back();
     }

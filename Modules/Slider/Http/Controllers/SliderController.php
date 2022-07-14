@@ -40,6 +40,8 @@ class SliderController extends Controller
             $fileName = date('Ymdhis') . '.' . $fileExtension;
             $file->move(storage_path('app/public/'), $fileName);
             Slider::create(array_merge($request->only('title', 'status'), ['slide' => $fileName]));
+            flash()->title("successfully action")
+                ->success('اسلایدر با موفقیت اضافه شد')->flash();
         }
         return redirect(route('slider.index'));
     }
@@ -79,8 +81,12 @@ class SliderController extends Controller
             $fileName = date('Ymdhis') . '.' . $fileExtension;
             $file->move(storage_path('app/public/'), $fileName);
             $slider->update(array_merge($request->only('title', 'status'), ['slide' => $fileName]));
+            flash()->title("successfully action")
+                ->success('اسلایدر با موفقیت ویرایش شد')->flash();
         }else{
             $slider->update(array_merge($request->only('title', 'status'), ['slide' => $slider->slide]));
+            flash()->title("successfully action")
+                ->success('اسلایدر با موفقیت ویرایش شد')->flash();
         }
         return  redirect(route('slider.index'));
     }
@@ -94,6 +100,8 @@ class SliderController extends Controller
     {
         unlink(storage_path('app/public/'. $slider->slide));
         $slider->delete();
+        flash()->title("successfully action")
+            ->success('اسلایدر با موفقیت حذف شد')->flash();
         return back();
     }
 }
