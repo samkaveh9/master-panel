@@ -1882,3 +1882,7 @@ span.tagRemove:hover {
     display: inline-block;
 }
 
+.d-contents{
+    display: contents;
+}
+
