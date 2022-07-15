@@ -76,7 +76,7 @@
                             value="{{ $permission->name }}"
                         >
                         <span class="checkmark"></span>
-                        @lang($permission->name)
+                        <div style="margin-right: 2rem">@lang($permission->name)</div>
                     </label>
                     @endforeach
 
@@ -86,7 +86,7 @@
                         </span>
                     @enderror
 
-                    <button class="btn btn-webamooz_net" type="submit">اضافه کردن</button>
+                    <button class="btn btn-webamooz_net mt-3" type="submit">اضافه کردن</button>
                 </form>
             </div>
         </div>

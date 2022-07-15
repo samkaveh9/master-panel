@@ -40,11 +40,19 @@
                         <span class="selectedFiles">فایلی انتخاب نشده است</span>
                     </div>
 
-                    <textarea class="text" name="content" id="content" placeholder="متن مقاله"></textarea>
+                    <textarea class="text" name="content" id="editor" placeholder="متن مقاله"></textarea>
 
-                    <button class="btn btn-webamooz_net" type="submit">ایجاد مقاله</button>
+                    <button class="btn btn-webamooz_net mt-4" type="submit">ایجاد مقاله</button>
                 </form>
             </div>
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('assets/plugins/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/plugins/ckeditor/samples/js/sample.js') }}"></script>
+    <script>
+        initSample();
+    </script>
+@endpush
